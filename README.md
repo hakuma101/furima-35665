@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| product     | string     | null: false                    |
-| discription | text       | null: false                    |
-| category    | integer    | null: false                    |
-| condition   | integer    | null: false                    |
-| cost        | integer    | null: false                    |
-| prefecture  | integer    | null: false                    |
-| sending     | integer    | null: false                    |
-| price       | integer    | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| product       | string     | null: false                    |
+| discription   | text       | null: false                    |
+| category_id   | integer    | null: false                    |
+| condition_id  | integer    | null: false                    |
+| cost_id       | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| sending_id    | integer    | null: false                    |
+| price         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -55,7 +55,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | manicipality  | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
