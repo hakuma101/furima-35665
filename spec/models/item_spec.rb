@@ -6,7 +6,6 @@ RSpec.describe Item, type: :model do
   end
 
   describe '商品の出品' do
-
     context '商品の出品ができる場合' do
       it 'すべての値が存在すれば登録できる' do
         expect(@item).to be_valid
@@ -82,27 +81,30 @@ RSpec.describe Item, type: :model do
       it 'priceが299以下では出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'priceが1000000以上では出品できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'priceが半角英字のみでは出品できない' do
         @item.price = 'aaaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters", "Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters',
+                                                      'Price is out of setting range')
       end
       it 'priceが半角英数字混合では出品できない' do
         @item.price = 'aa11'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters", "Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters',
+                                                      'Price is out of setting range')
       end
       it 'priceが全角数字では出品できない' do
         @item.price = '１１１１'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters", "Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters',
+                                                      'Price is out of setting range')
       end
       it 'imageが空では登録できない' do
         @item.image = nil
