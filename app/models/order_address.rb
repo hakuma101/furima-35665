@@ -1,4 +1,4 @@
-class DonationAddress
+class OrderAddress
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :manicipality, :house_number, :building_name, :user_id, :item_id
 
@@ -7,8 +7,8 @@ class DonationAddress
   validates :manicipality,   presence: true
   validates :house_number,   presence: true
   validates :phone_number,   presence: true, format: {with: /\A[0-9]{,11}\z/, message: ""}
-  validates :user_id
-  validates :item_id
+  validates :user_id,        presence: true
+  validates :item_id,        presence: true
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
