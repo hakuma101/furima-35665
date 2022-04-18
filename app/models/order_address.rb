@@ -6,12 +6,13 @@ class OrderAddress
   validates :prefecture_id,  numericality: { other_than: 1, message: "can't be blank" }
   validates :manicipality,   presence: true
   validates :house_number,   presence: true
+  validates :building_name
   validates :phone_number,   presence: true, format: {with: /\A[0-9]{,11}\z/, message: ""}
   validates :user_id,        presence: true
   validates :item_id,        presence: true
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, manicipality: manicipality, house_number: house_number, building_name: building_name, order_id: order.id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, manicipality: manicipality, house_number: house_number, building_name: building_name, phone_number: phone_number, order_id: order.id)
   end
 end
