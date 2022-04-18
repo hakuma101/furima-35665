@@ -9,6 +9,7 @@ class OrderAddress
   validates :phone_number,   presence: true, format: {with: /\A[0-9]{,11}\z/, message: ""}
   validates :user_id,        presence: true
   validates :item_id,        presence: true
+  validates :token,          presence: true
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
