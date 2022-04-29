@@ -11,6 +11,8 @@ class Item < ApplicationRecord
 
   has_one :order
 
+  has_many :comments
+
   with_options presence: true do
     validates :image
     validates :product
